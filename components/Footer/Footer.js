@@ -1,9 +1,9 @@
 import footer from "./Footer.module.css"
 
-function Footer() {
+function Footer({date}) {
   return(
     <footer className={footer.footer}>
-      <p className={footer.copyright}>2022 &#169; Все права и планеты защищены</p>
+      <p className={footer.copyright}>{date.getFullYear()} &#169; Все права и планеты защищены</p>
     </footer>
   )
 }

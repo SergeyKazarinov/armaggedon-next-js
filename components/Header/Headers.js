@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router';
 import Link from "next/Link";
 import header from './Header.module.css';
-import Image from 'next/image';
-// import background from '../../public/headerBackground.jpg'
 
 function Header({}) {
   const {pathname} = useRouter();

@@ -1,0 +1,121 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s, opacity 1s;
+  z-index: 1;
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 1s, opacity 1s;
+}
+
+.popup_container {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  padding: 34px 36px 37px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.buttonClose {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: 0;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("../../images/Close-Icon.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.title {
+  max-height: 23px;
+  margin: 0;
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  animation: rotate 4s linear infinite;
+}
+
+.description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 540px) {
+  .popup_container {
+    max-width: 282px;
+    padding: 25px 22px;
+  }
+
+  .title {
+    max-height: 22px;
+    margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .buttonClose {
+    top: -36px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+}

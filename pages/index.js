@@ -1,10 +1,16 @@
-import Header from '../components/Header/Headers';
+import AsteroidList from '../components/AsteroidList/AsteroidList'
 
-function Home() {
+function Home({dataList, orderList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick}) {
+  console.log(dataList)
   return(
-    <>
-      
-    </>
+    <AsteroidList
+      dataList={dataList}
+      orderList={orderList}
+      openPopup={openPopup}
+      isDistanceKilometers={isDistanceKilometers}
+      onAddClick={onAddClick}
+      onRemoveClick={onRemoveClick}
+    />
   )
 }
 
