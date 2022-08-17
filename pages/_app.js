@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout'
+import AsteroidDescriptionPopup from '../components/AsteroidDescriptionPopup/AsteroidDescriptionPopup';
 import '../styles/normalize.css'
 import '../fonts/fonts.css'
 import app from '../styles/App.module.css'
@@ -138,7 +139,7 @@ function MyApp ({ Component, pageProps }) {
         distanceLunar={handleDistanceLunarClick}
         onFilterClick={handleDangerousClick}
         date={date}
-
+        image={headerImage}
 
       >
         {/* <div className={app.content}> */}
@@ -152,6 +153,7 @@ function MyApp ({ Component, pageProps }) {
           />
         {/* </div> */}
       </Layout>
+      {isLoader && <AsteroidDescriptionPopup data={selectAsteroid} isOpen={isOpen} onClose={closePopup}/>}
     </div>
   )
 }

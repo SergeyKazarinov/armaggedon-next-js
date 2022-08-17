@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from "next/Link";
 import header from './Header.module.css';
 
-function Header({}) {
+function Header({image}) {
   const {pathname} = useRouter();
 
   return(
@@ -17,7 +17,7 @@ function Header({}) {
           <Link href="/order"><a className={`${header.button} ${pathname === "/order" ? header.active : null}`}>Заказ</a></Link>
         </nav>
       </div>
-      <img className={header.image} src="/headerBackground.jpg" alt="Картинка дня" />
+      <img className={header.image} src={image} alt="Картинка дня" />
     </header>
   )
 }

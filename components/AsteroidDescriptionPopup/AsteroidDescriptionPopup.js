@@ -1,6 +1,5 @@
 import React from 'react';
 import popup from './AsteroidDescriptionPopup.module.css';
-import asteroidImage from '../../images/asteroid.png';
 
 function AsteroidDescriptionPopup({data, isOpen, onClose}) {
   function handleCLoseOverlayClick(e) {
@@ -15,7 +14,7 @@ function AsteroidDescriptionPopup({data, isOpen, onClose}) {
         <button type="button" className={popup.buttonClose} onClick={onClose}></button>
         <h2 className={popup.title}>Астероид {data.name}</h2>
         <div className={popup.flex}>
-          <img className={popup.image} src={asteroidImage} alt="Изображение астероида" />
+          <img className={popup.image} src="/asteroid.png" alt="Изображение астероида" />
           <div className={popup.description}>
             <span>&#8709; {`${Math.floor(data.estimated_diameter.meters.estimated_diameter_max)} м`}</span>
             <span>&#8596; {Math.floor(data.close_approach_data[0].miss_distance.kilometers) + " км"}</span>
