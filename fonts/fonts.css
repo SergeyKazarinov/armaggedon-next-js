@@ -1,0 +1,17 @@
+@font-face {
+  src: url("./Helvetica/helvetica_light.otf") format("truetype");
+  font-family: "Helvetica";
+  font-weight: 400;
+}
+
+@font-face {
+  src: url("./Helvetica/helvetica_regular.otf") format("truetype");
+  font-family: "Helvetica";
+  font-weight: 500;
+}
+
+@font-face {
+  src: url("./Helvetica/helvetica_bold.otf") format("truetype");
+  font-family: "Helvetica";
+  font-weight: 700;
+}
