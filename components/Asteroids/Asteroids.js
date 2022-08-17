@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback} from "react";
 import asteroids from './Asteroids.module.css';
 
 function Asteroids({ data, orderList, isDistanceKilometers, onAddClick, onRemoveClick, onOpenPopup}) {
@@ -7,7 +7,6 @@ function Asteroids({ data, orderList, isDistanceKilometers, onAddClick, onRemove
   const dayDataAsteroid = data.close_approach_data[0].close_approach_date.slice(8);
   const isPotentiallyHazardousAsteroid = data.is_potentially_hazardous_asteroid;
   const asteroidName = data.name.slice(data.name.indexOf('(') + 1, -1);
-  const [isAddOrder, setIsAddOrder] = useState(false);
 
   let monthNameDataAsteroid;
   switch(monthDataAsteroid) {
@@ -50,19 +49,19 @@ function Asteroids({ data, orderList, isDistanceKilometers, onAddClick, onRemove
   }
 
   function handleClick() {
-    if(isAddOrder) {
+    if(orderList.map((item) => item.id).includes(data.id)) {
       onRemoveClick(data);
-      setIsAddOrder(false);
     }
     else {
       onAddClick(data);
-      setIsAddOrder(true);
     }
   }
 
   function handleAsteroidClick() {
     onOpenPopup(data);
   }
+
+  const handleAddAsteroidToOrder = useCallback(() => (orderList.map((item) => item.id).includes(data.id)), [orderList])
 
   return(
     <li className={`${asteroids.flex} ${asteroids.flex_column} ${asteroids.item}`}>
@@ -80,7 +79,7 @@ function Asteroids({ data, orderList, isDistanceKilometers, onAddClick, onRemove
             <span className={asteroids.status}>{isPotentiallyHazardousAsteroid ? "Опасен" : "Не опасен"}</span>
           </div>
         </button>
-        <button type="button" className={asteroids.button} onClick={handleClick}>{!(orderList.map((item) => item.id).includes(data.id)) ? "УНИЧТОЖИТЬ" : "НЕ УНИЧТОЖАТЬ"}</button>
+        <button type="button" className={asteroids.button} onClick={handleClick}>{!handleAddAsteroidToOrder() ? "УНИЧТОЖИТЬ" : "НЕ УНИЧТОЖАТЬ"}</button>
     </li>
   )
 }

@@ -1,7 +1,6 @@
 import AsteroidList from '../components/AsteroidList/AsteroidList'
 
 function Home({dataList, orderList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick}) {
-  console.log(dataList)
   return(
     <AsteroidList
       dataList={dataList}

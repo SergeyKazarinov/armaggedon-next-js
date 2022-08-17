@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import order from './Orders.module.css';
 import OrderList from '../OrderList/OrderList';
 
-function AsteroidList({dataList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick}) {
+function AsteroidList({dataList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick, onSubmit}) {
   const [arrAsteroid, setArrAsteroid] = useState(dataList);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function AsteroidList({dataList, openPopup, isDistanceKilometers, onAddClick, on
             />)
           )}
         </ul>
-        <button type="button" className={order.button_submit}>Отправить заказ</button>
+        <button type="button" className={order.button_submit} onClick={onSubmit}>Отправить заказ</button>
       </section>
   )
 }

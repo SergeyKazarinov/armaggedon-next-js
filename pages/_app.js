@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout'
 import AsteroidDescriptionPopup from '../components/AsteroidDescriptionPopup/AsteroidDescriptionPopup';
+import SubmitOrderPopup from '../components/SubmitOrderPopup/SubmitOrderPopup';
 import '../styles/normalize.css'
 import '../fonts/fonts.css'
 import app from '../styles/App.module.css'
 import api from '../utils/Api';
 
 
-function MyApp ({ Component, pageProps }) {
+function MyApp ({ Component }) {
   const date = new Date();
   const [currentPage, setCurrentPage] = useState(1)
   const [headerImage, setHeaderImage] = useState('');
@@ -22,6 +23,7 @@ function MyApp ({ Component, pageProps }) {
   const [isPotentiallyHazardous, setIsPotentiallyHazardous] = useState(false);
   const [order, setOrder] = useState([]);
   const [currentOrder, setCurrentOrder] = useState(order);
+  const [isSubmitOrder, setIsSubmitOrder] = useState(false);
 
   useEffect(() => {
     api.getApodImage()
@@ -107,6 +109,7 @@ function MyApp ({ Component, pageProps }) {
 
   function closePopup() {
     setIsOpen(false);
+    setIsSubmitOrder(false);
     window.removeEventListener('keydown', handleEscClose);
   }
 
@@ -132,6 +135,12 @@ function MyApp ({ Component, pageProps }) {
     })
   }
 
+  function handleSubmitOrder() {
+    setIsSubmitOrder(true);
+    setOrder([]);
+    window.addEventListener('keydown', handleEscClose);
+  }
+
   return (
     <div className={app.app}>
       <Layout
@@ -142,18 +151,19 @@ function MyApp ({ Component, pageProps }) {
         image={headerImage}
 
       >
-        {/* <div className={app.content}> */}
           <Component 
             dataList={currentAsteroid}
-            orderList={order}
+            orderList={currentOrder}
             openPopup={handleOpenPopup}
             isDistanceKilometers={isDistanceKilometers}
             onAddClick={handleAddAsteroidDestroy}
             onRemoveClick={handleRemoveAsteroidDestroy}
+            onSubmit={handleSubmitOrder}
           />
-        {/* </div> */}
       </Layout>
       {isLoader && <AsteroidDescriptionPopup data={selectAsteroid} isOpen={isOpen} onClose={closePopup}/>}
+
+      <SubmitOrderPopup isOpen={isSubmitOrder} onClose={closePopup}/>
     </div>
   )
 }

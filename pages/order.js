@@ -1,7 +1,7 @@
 import Orders from '../components/Orders/Orders';
 import app from '../styles/App.module.css';
 
-function Order({orderList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick}) {
+function Order({orderList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick, onSubmit}) {
   return(
     <>
       <h2 className={app.title}>Ваш заказ</h2>
@@ -16,6 +16,7 @@ function Order({orderList, openPopup, isDistanceKilometers, onAddClick, onRemove
           isDistanceKilometers={isDistanceKilometers}
           onAddClick={onAddClick}
           onRemoveClick={onRemoveClick}
+          onSubmit={onSubmit}
       />}
     </>
   )
