@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import order from './Order.module.css';
+import order from './Orders.module.css';
 import OrderList from '../OrderList/OrderList';
 
 function AsteroidList({dataList, openPopup, isDistanceKilometers, onAddClick, onRemoveClick}) {

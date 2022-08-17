@@ -1,8 +1,5 @@
 import React, {useState} from "react";
 import orderAsteroids from './OrderList.module.css';
-import app from '../App/App.module.css';
-import dangerousImage from '../../images/potentially_hazardous_asteroid.png'
-import inDangerousImage from '../../images/potentially_inhazardous_asteroid.png'
 
 function OrderList({ data, orderList, isDistanceKilometers, onAddClick, onRemoveClick, onOpenPopup}) {
   const yearDataAsteroid = data.close_approach_data[0].close_approach_date.slice(0, 4);
@@ -61,11 +58,11 @@ function OrderList({ data, orderList, isDistanceKilometers, onAddClick, onRemove
 
 
   return(
-    <li className={`${app.flex} ${app.flex_column} ${orderAsteroids.item}`}>
+    <li className={`${orderAsteroids.flex} ${orderAsteroids.flex_column} ${orderAsteroids.item}`}>
         <h3 className={orderAsteroids.date}>{dayDataAsteroid} {monthNameDataAsteroid} {yearDataAsteroid}</h3>
-        <button type="button" className={`${app.flex} ${orderAsteroids.data}`} onClick={handleAsteroidClick}>
-          <img className={`${orderAsteroids.image}`} src={isPotentiallyHazardousAsteroid ? dangerousImage : inDangerousImage} alt={isPotentiallyHazardousAsteroid ? "Опасный астероид" : "Не опасный астероид"}/>
-          <div className={`${app.flex} ${app.flex_column} ${orderAsteroids.description}`}>
+        <button type="button" className={`${orderAsteroids.flex} ${orderAsteroids.data}`} onClick={handleAsteroidClick}>
+          <img className={`${orderAsteroids.image}`} src={isPotentiallyHazardousAsteroid ? '/potentially_hazardous_asteroid.png' : '/potentially_inhazardous_asteroid.png'} alt={isPotentiallyHazardousAsteroid ? "Опасный астероид" : "Не опасный астероид"}/>
+          <div className={`${orderAsteroids.flex} ${orderAsteroids.flex_column} ${orderAsteroids.description}`}>
             <h4 className={`${orderAsteroids.description} ${orderAsteroids.title}`}>Астероид {asteroidName}</h4>
             <span className={orderAsteroids.diameter}>&#8709; {`${Math.floor(data.estimated_diameter.meters.estimated_diameter_max)} м`}</span>
             <span className={orderAsteroids.distance}>
