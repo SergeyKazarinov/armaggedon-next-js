@@ -6,7 +6,7 @@ import SubmitOrderPopup from '../components/SubmitOrderPopup/SubmitOrderPopup';
 import '../styles/normalize.css'
 import '../fonts/fonts.css'
 import app from '../styles/App.module.css'
-import api from '../utils/Api';
+import api from './api/Api';
 
 
 function MyApp ({ Component }) {
